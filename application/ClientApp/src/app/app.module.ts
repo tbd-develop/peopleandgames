@@ -13,7 +13,8 @@ import { AddPersonComponent } from './people/components/add-person/add-person.co
 
 import {
   MatInputModule, MatToolbarModule, MatIconModule,
-  MatCardModule, MatButtonModule, MatSnackBarModule
+  MatCardModule, MatButtonModule, MatSnackBarModule,
+  MatTableModule
 } from '@angular/material';
 import { ListPeopleComponent } from './people/components/list-people/list-people.component';
 
@@ -32,11 +33,12 @@ import { ListPeopleComponent } from './people/components/list-people/list-people
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'people', component: PeopleComponent, pathMatch: 'full'}
+      { path: 'people-with-games', component: PeopleComponent, pathMatch: 'full'}
     ]),
     BrowserAnimationsModule,
     MatInputModule, MatToolbarModule, MatIconModule,
-    MatCardModule, MatButtonModule, MatSnackBarModule
+    MatCardModule, MatButtonModule, MatSnackBarModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
