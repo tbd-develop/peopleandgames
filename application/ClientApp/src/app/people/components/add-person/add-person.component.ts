@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-person',
@@ -8,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class AddPersonComponent implements OnInit {
   public person: Person;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.person = new Person();
   }
 
   ngOnInit() {
+  }
+
+  addContact() {
+    this.http.post('person', this.person).subscribe(_ => {
+
+    });
   }
 
 }
