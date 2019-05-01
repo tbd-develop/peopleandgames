@@ -17,6 +17,7 @@ import {
   MatTableModule
 } from '@angular/material';
 import { ListPeopleComponent } from './people/components/list-people/list-people.component';
+import { NotificationsService } from './services/notifications.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { ListPeopleComponent } from './people/components/list-people/list-people
     MatCardModule, MatButtonModule, MatSnackBarModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [NotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
