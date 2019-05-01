@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using application.Infrastructure.Inputs;
 using application.Infrastructure.Models;
+using application.Infrastructure.ViewModels;
 using LiteDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,26 @@ namespace application.Controllers
             }
 
             return StatusCode(StatusCodes.Status400BadRequest); // Not good practice, no information reported and we own both sides
+        }
+
+        [HttpGet, Route("people")]
+        public ActionResult<IEnumerable<PersonViewModel>> GetPeople()
+        {
+            using (var db = new LiteDatabase("MyData.db"))
+            {
+                var persons = db.GetCollection<Person>("persons");
+
+                var results = from x in persons.FindAll()
+                              select new PersonViewModel
+                              {
+                                  FirstName = x.FirstName,
+                                  LastName = x.LastName,
+                                  Email = x.Email,
+                                  Phone = x.Phone
+                              };
+
+                return new ActionResult<IEnumerable<PersonViewModel>>(results);
+            }
         }
     }
 }
