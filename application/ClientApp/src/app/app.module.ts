@@ -15,6 +15,7 @@ import {
   MatInputModule, MatToolbarModule, MatIconModule,
   MatCardModule, MatButtonModule, MatSnackBarModule
 } from '@angular/material';
+import { ListPeopleComponent } from './people/components/list-people/list-people.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {
     NavMenuComponent,
     HomeComponent,
     PeopleComponent,
-    AddPersonComponent
+    AddPersonComponent,
+    ListPeopleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

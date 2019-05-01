@@ -7,3 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 95%;
   margin: 0 auto;
 }
+
+mat-card {
+  margin-bottom: 1.5rem;
+}
