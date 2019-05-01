@@ -1,4 +1,7 @@
 <p>
-  people works!
-  <app-add-person></app-add-person>
+  <button type="button" mat-raised-button color="primary" (click)="toggleAddPerson()">
+    <span *ngIf="!addPersonVisible">Show</span><span *ngIf="addPersonVisible">Hide</span>&nbsp;Add Person
+  </button>
+  <br />
+  <app-add-person *ngIf="addPersonVisible"></app-add-person>
 </p>
