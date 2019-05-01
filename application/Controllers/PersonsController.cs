@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using application.Infrastructure.Inputs;
 using application.Infrastructure.Models;
 using LiteDB;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace application.Controllers
@@ -12,7 +15,7 @@ namespace application.Controllers
     public class PersonsController : Controller
     {
         [HttpPost, Route("person")]
-        public void AddPerson([FromBody]PersonInputModel model)
+        public IActionResult AddPerson([FromBody]PersonInputModel model)
         {
             if (ModelState.IsValid)
             {
@@ -20,6 +23,15 @@ namespace application.Controllers
                 {
                     // Get person collection
                     var persons = db.GetCollection<Person>("persons");
+
+                    var existsAlready = persons.FindOne(f =>
+                        f.FirstName.Equals(model.FirstName, StringComparison.CurrentCultureIgnoreCase) &&
+                        f.LastName.Equals(model.LastName, StringComparison.CurrentCultureIgnoreCase));
+
+                    if (existsAlready != null)
+                    {
+                        return StatusCode(StatusCodes.Status409Conflict);
+                    }
 
                     // Create your new person instance
                     var person = new Person
@@ -36,7 +48,11 @@ namespace application.Controllers
                     // Index document using a document property
                     persons.EnsureIndex(x => x.LastName);
                 }
+
+                return StatusCode(StatusCodes.Status200OK);
             }
+
+            return StatusCode(StatusCodes.Status400BadRequest); // Not good practice, no information reported and we own both sides
         }
     }
 }

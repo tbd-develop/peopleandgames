@@ -11,7 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PeopleComponent } from './people/people.component';
 import { AddPersonComponent } from './people/components/add-person/add-person.component';
 
-import { MatInputModule, MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule } from '@angular/material';
+import {
+  MatInputModule, MatToolbarModule, MatIconModule,
+  MatCardModule, MatButtonModule, MatSnackBarModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { MatInputModule, MatToolbarModule, MatIconModule, MatCardModule, MatButt
       { path: 'people', component: PeopleComponent, pathMatch: 'full'}
     ]),
     BrowserAnimationsModule,
-    MatInputModule, MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule
+    MatInputModule, MatToolbarModule, MatIconModule,
+    MatCardModule, MatButtonModule, MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
