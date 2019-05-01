@@ -18,6 +18,7 @@ import {
 } from '@angular/material';
 import { ListPeopleComponent } from './people/components/list-people/list-people.component';
 import { NotificationsService } from './services/notifications.service';
+import { GamesListComponent } from './people/components/games-list/games-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NotificationsService } from './services/notifications.service';
     HomeComponent,
     PeopleComponent,
     AddPersonComponent,
-    ListPeopleComponent
+    ListPeopleComponent,
+    GamesListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

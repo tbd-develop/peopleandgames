@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { NotificationsService, Notification } from '../../../services/notifications.service';
+import { Person } from '../../models/person.model';
 
 @Component({
   selector: 'app-add-person',
@@ -40,11 +41,4 @@ export class AddPersonComponent implements OnInit {
       }
     });
   }
-}
-
-class Person {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
 }
