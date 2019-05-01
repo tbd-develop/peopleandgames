@@ -1,3 +1,24 @@
 table {
   width: 100%;
 }
+
+tr.person-detail-row {
+  height: 0;
+}
+
+  tr.person-detail-row:not(.person-expanded-row):hover {
+    background: #f5f5f5;
+  }
+
+  tr.person-detail-row:not(.person-expanded-row):active {
+    background: #efefef;
+  }
+
+.person-detail-row td {
+  border-bottom-width: 0;
+}
+
+.person-detail {
+  overflow: hidden;
+  display: flex;
+}

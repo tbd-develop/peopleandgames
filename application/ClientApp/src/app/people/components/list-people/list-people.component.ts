@@ -3,15 +3,24 @@ import { HttpClient } from '@angular/common/http';
 import { NotificationsService, Notification } from '../../../services/notifications.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
   selector: 'app-list-people',
   templateUrl: './list-people.component.html',
-  styleUrls: ['./list-people.component.css']
+  styleUrls: ['./list-people.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ])
+  ]
 })
 export class ListPeopleComponent implements AfterViewInit, OnDestroy {
   public people: Person[];
+  public expandedElement: Person;
   public displayedColumns: string[] = ["firstName", "lastName", "email", "phone"];
   private subscription: Subscription;
 
