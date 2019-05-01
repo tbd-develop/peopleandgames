@@ -2,16 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { NotificationsService, Notification } from '../../../services/notifications.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-person',
   templateUrl: './add-person.component.html',
   styleUrls: ['./add-person.component.css']
 })
-export class AddPersonComponent implements OnInit, OnDestroy {
+export class AddPersonComponent implements OnInit {
   public person: Person;
-  private subscription: Subscription;
 
   constructor(private http: HttpClient,
     private snackBar: MatSnackBar,
@@ -20,10 +18,6 @@ export class AddPersonComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   addContact() {
