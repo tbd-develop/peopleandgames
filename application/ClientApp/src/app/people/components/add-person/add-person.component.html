@@ -1,0 +1,33 @@
+<form>
+  <mat-card>
+    <mat-card-title>
+      <h3>Add Person</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="First Name" [(ngModel)]="person.firstName" name="firstName" autocomplete="off" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Last Name" [(ngModel)]="person.lastName" name="lastName" autocomplete="off" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Phone" [(ngModel)]="person.phone" name="phone" autocomplete="off" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput type="email" placeholder="Email" [(ngModel)]="person.email" name="email" autocomplete="off" />
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="reset" mat-raised-button color="accent">Reset</button>
+      <button type="button" mat-raised-button color="primary">Add Person</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

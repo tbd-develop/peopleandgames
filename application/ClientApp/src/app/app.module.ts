@@ -9,13 +9,17 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PeopleComponent } from './people/people.component';
+import { AddPersonComponent } from './people/components/add-person/add-person.component';
+
+import { MatInputModule, MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    PeopleComponent
+    PeopleComponent,
+    AddPersonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,7 +29,8 @@ import { PeopleComponent } from './people/people.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'people', component: PeopleComponent, pathMatch: 'full'}
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule, MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-<header>
+<!--<header>
   <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3'>
     <div class="container">
       <a class="navbar-brand" [routerLink]='["/"]'>application</a>
@@ -18,4 +18,17 @@
       </div>
     </div>
   </nav>
+</header>-->
+
+<header>
+  <mat-toolbar>
+    <span><a class="navbar-brand" [routerLink]='["/"]'>People with Games</a></span>
+    <span class="nav-spacer"></span>
+    <span class="nav-link" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+      <a [routerLink]='["/people"]'>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">face</mat-icon>
+        <span class="nav-link-text">People</span>
+      </a>
+    </span>
+  </mat-toolbar>
 </header>

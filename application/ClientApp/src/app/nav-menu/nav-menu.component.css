@@ -4,6 +4,20 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+.nav-link {
+  padding: 0 14px;
+  vertical-align: middle;
+}
+
+header a {
+  text-decoration: none;
+  color: #000;
+}
+
 html {
   font-size: 14px;
 }
