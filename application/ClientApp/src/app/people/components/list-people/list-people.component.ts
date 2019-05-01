@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NotificationsService, Notification } from '../../../services/notifications.service';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ListPeopleComponent implements AfterViewInit, OnDestroy {
   public displayedColumns: string[] = ["firstName", "lastName", "email", "phone"];
   private subscription: Subscription;
 
-  constructor(private http: HttpClient, private notifications: NotificationsService) {
+  constructor(private http: HttpClient, private notifications: NotificationsService, private snackBar: MatSnackBar) {
     this.subscription = this.notifications.subscribe(this.notificationReceived.bind(this));
   }
 
@@ -35,6 +36,7 @@ export class ListPeopleComponent implements AfterViewInit, OnDestroy {
   private notificationReceived(notification: Notification) {
     if (notification !== undefined && notification !== null) {
       this.loadPeople();
+      this.snackBar.open('New Person Added', null, { duration: 900 });
     }
   }
 }
