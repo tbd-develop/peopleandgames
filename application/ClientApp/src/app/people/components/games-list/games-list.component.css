@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+mat-card {
+  margin: 1rem auto;
+}
+
+mat-card-subtitle {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2.4rem;
+}

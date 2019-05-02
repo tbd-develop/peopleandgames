@@ -19,6 +19,9 @@ tr.person-detail-row {
 }
 
 .person-detail {
-  overflow: hidden;
   display: flex;
+}
+
+app-games-list {
+  width: 100%;
 }

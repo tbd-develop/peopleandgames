@@ -14,7 +14,7 @@ import { AddPersonComponent } from './people/components/add-person/add-person.co
 import {
   MatInputModule, MatToolbarModule, MatIconModule,
   MatCardModule, MatButtonModule, MatSnackBarModule,
-  MatTableModule
+  MatTableModule, MatExpansionModule
 } from '@angular/material';
 import { ListPeopleComponent } from './people/components/list-people/list-people.component';
 import { NotificationsService } from './services/notifications.service';
@@ -41,7 +41,7 @@ import { GamesListComponent } from './people/components/games-list/games-list.co
     BrowserAnimationsModule,
     MatInputModule, MatToolbarModule, MatIconModule,
     MatCardModule, MatButtonModule, MatSnackBarModule,
-    MatTableModule
+    MatTableModule, MatExpansionModule
   ],
   providers: [NotificationsService],
   bootstrap: [AppComponent]

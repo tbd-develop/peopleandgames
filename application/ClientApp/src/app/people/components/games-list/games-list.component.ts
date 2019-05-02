@@ -9,10 +9,32 @@ import { Person } from '../../models/person.model';
 export class GamesListComponent implements AfterViewInit {
   @Input() person: Person;
 
-  constructor() { }
+  public games: Game[];
+  public displayedColumns: string[] = [ "name", "platform", "year" ];
 
-  ngAfterViewInit() {
-    
+  constructor() {
+    this.games = [
+      {
+        name: 'Sonic The Hedgehog',
+        platform: 'Sega Genesis',
+        year: 1991
+      },
+      {
+        name: 'Tetris',
+        platform: 'Nintendo Gameboy',
+        year: 1989
+      }
+    ];
   }
 
+  ngAfterViewInit() {
+   
+  }
+
+}
+
+interface Game {
+  name: string;
+  platform: string;
+  year: number;
 }
