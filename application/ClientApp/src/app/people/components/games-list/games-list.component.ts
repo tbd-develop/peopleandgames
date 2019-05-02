@@ -2,6 +2,7 @@ import { Component, AfterViewInit, Input } from '@angular/core';
 import { Person } from '../../models/person.model';
 import { MatDialog } from '@angular/material';
 import { DialogAddGameComponent } from '../dialog-add-game/dialog-add-game.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-games-list',
@@ -14,23 +15,10 @@ export class GamesListComponent implements AfterViewInit {
   public games: Game[];
   public displayedColumns: string[] = [ "name", "platform", "year" ];
 
-  constructor(public dialog: MatDialog) {
-    this.games = [
-      {
-        name: 'Sonic The Hedgehog',
-        platform: 'Sega Genesis',
-        year: 1991
-      },
-      {
-        name: 'Tetris',
-        platform: 'Nintendo Gameboy',
-        year: 1989
-      }
-    ];
-  }
+  constructor(public dialog: MatDialog, private http:HttpClient) { }
 
   ngAfterViewInit() {
-   
+    this.loadGames();
   }
 
   addGame(): void {
@@ -40,14 +28,22 @@ export class GamesListComponent implements AfterViewInit {
         data: { personId: this.person.id }
       });
 
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('Dialog Was Closed');
+    dialogRef.afterClosed().subscribe((gameName: string) => {
+      if (gameName !== undefined) {
+        this.loadGames();
+      }
     });
   }
 
+  private loadGames(): void {
+    this.http.get<Game[]>(`games/for/${this.person.id}`).subscribe(results => {
+      this.games = results;
+    });
+  }
 }
 
 interface Game {
+  id: number;
   name: string;
   platform: string;
   year: number;

@@ -22,7 +22,7 @@ export class DialogAddGameComponent implements OnInit {
 
   addGameToUser(): void {
     this.http.post('games', this.data).subscribe(_ => {
-      this.dialogRef.close();
+      this.dialogRef.close(this.data.name);
     });
   }
 

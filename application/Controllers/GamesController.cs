@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using application.Infrastructure.Inputs;
 using application.Infrastructure.Models;
+using application.Infrastructure.ViewModels;
 using LiteDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +52,27 @@ namespace application.Controllers
             }
 
             return StatusCode(StatusCodes.Status400BadRequest);
+        }
+
+        [HttpGet, Route("games/for/{personId}")]
+        public ActionResult<IEnumerable<GameViewModel>> GetGamesFor(int personId)
+        {
+            using (var db = new LiteDatabase("MyData.db"))
+            {
+                var games = db.GetCollection<Game>("games");
+
+                var results = from x in games.FindAll()
+                    where x.PersonId == personId
+                    select new GameViewModel
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                        Platform = x.Platform,
+                        Year = x.Year
+                    };
+
+                return new ActionResult<IEnumerable<GameViewModel>>(results);
+            }
         }
     }
 }
