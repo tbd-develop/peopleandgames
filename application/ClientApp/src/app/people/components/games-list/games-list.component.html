@@ -2,6 +2,7 @@
   <mat-card-subtitle>
     {{person.firstName}}s Games
     <span class="actions">
+      <button type="button" mat-icon-button color="accent" (click)="loadGames()" title="Refresh"><mat-icon>refresh</mat-icon></button>
       <button type="button" mat-icon-button color="primary" (click)="addGame()" title="Add Game"><mat-icon>add_box</mat-icon></button>
     </span>
   </mat-card-subtitle>

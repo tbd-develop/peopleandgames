@@ -44,8 +44,9 @@ export class ListPeopleComponent implements AfterViewInit, OnDestroy {
   }
 
   private notificationReceived(notification: Notification) {
-    if (notification !== undefined && notification !== null) {
+    if (notification !== undefined && notification !== null && notification.name === "person-added") {
       this.loadPeople();
+
       this.snackBar.open('New Person Added', null, { duration: 900 });
     }
   }

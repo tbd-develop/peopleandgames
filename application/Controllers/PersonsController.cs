@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using application.Infrastructure;
 using application.Infrastructure.Inputs;
 using application.Infrastructure.Models;
 using application.Infrastructure.ViewModels;
@@ -15,12 +16,19 @@ namespace application.Controllers
 {
     public class PersonsController : Controller
     {
+        private readonly LiteDbDataStore _store;
+
+        public PersonsController(LiteDbDataStore store)
+        {
+            _store = store;
+        }
+
         [HttpPost, Route("person")]
         public IActionResult AddPerson([FromBody]PersonInputModel model)
         {
             if (ModelState.IsValid)
             {
-                using (var db = new LiteDatabase(@"MyData.db"))
+                using (var db = _store.GetConnection())
                 {
                     // Get person collection
                     var persons = db.GetCollection<Person>("persons");
@@ -59,7 +67,7 @@ namespace application.Controllers
         [HttpGet, Route("people")]
         public ActionResult<IEnumerable<PersonViewModel>> GetPeople()
         {
-            using (var db = new LiteDatabase("MyData.db"))
+            using (var db = _store.GetConnection())
             {
                 var persons = db.GetCollection<Person>("persons");
 

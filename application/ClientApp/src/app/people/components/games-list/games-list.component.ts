@@ -25,7 +25,7 @@ export class GamesListComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(DialogAddGameComponent,
       {
         width: '350px',
-        data: { personId: this.person.id }
+        data: { personId: this.person.id, personName: `${this.person.firstName} ${this.person.lastName}` }
       });
 
     dialogRef.afterClosed().subscribe((gameName: string) => {

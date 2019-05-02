@@ -1,4 +1,5 @@
 using application.Hubs;
+using application.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,8 @@ namespace application
             });
 
             services.AddSignalR();
+
+            services.AddTransient(svc => new LiteDbDataStore(Configuration["LiteDb:Path"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

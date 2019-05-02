@@ -34,6 +34,7 @@ export class NotificationsService {
 
 export class Notification {
   name: string;
+  description: string;
 
   constructor(name: string) {
     this.name = name;

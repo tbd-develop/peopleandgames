@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using application.Infrastructure;
 using application.Infrastructure.Inputs;
 using application.Infrastructure.Models;
 using application.Infrastructure.ViewModels;
@@ -13,12 +14,19 @@ namespace application.Controllers
 {
     public class GamesController : Controller
     {
+        private readonly LiteDbDataStore _store;
+
+        public GamesController(LiteDbDataStore store)
+        {
+            _store = store;
+        }
+
         [HttpPost,Route("games")]
         public IActionResult AddGame([FromBody] GameInputModel model)
         {
             if (ModelState.IsValid)
             {
-                using (var db = new LiteDatabase(@"MyData.db"))
+                using (var db = _store.GetConnection())
                 {
                     // Get games collection
                     var games = db.GetCollection<Game>("games");
@@ -57,7 +65,7 @@ namespace application.Controllers
         [HttpGet, Route("games/for/{personId}")]
         public ActionResult<IEnumerable<GameViewModel>> GetGamesFor(int personId)
         {
-            using (var db = new LiteDatabase("MyData.db"))
+            using (var db = _store.GetConnection())
             {
                 var games = db.GetCollection<Game>("games");
 
