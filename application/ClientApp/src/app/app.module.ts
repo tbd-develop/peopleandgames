@@ -14,11 +14,12 @@ import { AddPersonComponent } from './people/components/add-person/add-person.co
 import {
   MatInputModule, MatToolbarModule, MatIconModule,
   MatCardModule, MatButtonModule, MatSnackBarModule,
-  MatTableModule, MatExpansionModule
+  MatTableModule, MatExpansionModule, MatDialogModule
 } from '@angular/material';
 import { ListPeopleComponent } from './people/components/list-people/list-people.component';
 import { NotificationsService } from './services/notifications.service';
 import { GamesListComponent } from './people/components/games-list/games-list.component';
+import { DialogAddGameComponent } from './people/components/dialog-add-game/dialog-add-game.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { GamesListComponent } from './people/components/games-list/games-list.co
     PeopleComponent,
     AddPersonComponent,
     ListPeopleComponent,
-    GamesListComponent
+    GamesListComponent,
+    DialogAddGameComponent
+  ],
+  entryComponents: [
+    DialogAddGameComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,7 +46,7 @@ import { GamesListComponent } from './people/components/games-list/games-list.co
     BrowserAnimationsModule,
     MatInputModule, MatToolbarModule, MatIconModule,
     MatCardModule, MatButtonModule, MatSnackBarModule,
-    MatTableModule, MatExpansionModule
+    MatTableModule, MatExpansionModule, MatDialogModule
   ],
   providers: [NotificationsService],
   bootstrap: [AppComponent]

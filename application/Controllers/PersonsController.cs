@@ -66,6 +66,7 @@ namespace application.Controllers
                 var results = from x in persons.FindAll()
                               select new PersonViewModel
                               {
+                                  Id = x.Id,
                                   FirstName = x.FirstName,
                                   LastName = x.LastName,
                                   Email = x.Email,

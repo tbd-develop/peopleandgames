@@ -4,6 +4,7 @@ import { NotificationsService, Notification } from '../../../services/notificati
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Person } from '../../models/person.model';
 
 
 @Component({
@@ -48,11 +49,4 @@ export class ListPeopleComponent implements AfterViewInit, OnDestroy {
       this.snackBar.open('New Person Added', null, { duration: 900 });
     }
   }
-}
-
-interface Person {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
 }

@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Add Game</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.name" placeholder="Name" name="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.platform" placeholder="Platform" name="platform" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.year" type="number" placeholder="Year" name="year" />
+  </mat-form-field>  
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="addGameToUser()" color="primary">Save</button>
+  <button mat-raised-button (click)="onCancelClick()" color="warn">Cancel</button>
+  
+  <!--<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>-->
+</div>
