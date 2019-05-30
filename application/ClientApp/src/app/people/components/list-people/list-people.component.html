@@ -3,10 +3,11 @@
     <h3>People</h3>
   </mat-card-title>
   <mat-card-content>
+    
     <table mat-table [dataSource]="people" class="mat-elevation-z8" multiTemplateDataRows>
 
       <!--- Note that these columns can be defined in any order.
-  The actual rendered columns are set as a property on the row definition" -->
+      The actual rendered columns are set as a property on the row definition" -->
       <!-- Position Column -->
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef> First </th>
@@ -34,7 +35,7 @@
       <ng-container matColumnDef="expandedDetail">
         <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
           <div class="person-detail"
-                   [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <app-games-list *ngIf="element == expandedElement" [person]="element"></app-games-list>
           </div>
         </td>
@@ -44,7 +45,7 @@
       <tr mat-row *matRowDef="let element; columns: displayedColumns;"
           [class.person-expanded-row]="expandedElement === element"
           (click)="expandedElement = expandedElement === element ? null : element"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="person-detail-row"></tr>      
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="person-detail-row"></tr>
     </table>
   </mat-card-content>
 </mat-card>
