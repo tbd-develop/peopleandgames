@@ -51,7 +51,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "typescript": "~3.2.4",
     "tar": "~4.4.2",
-    "lodash": "~4.17.11",
+    "lodash": "~4.17.21",
     "extend": "~3.0.2",
     "webpack-dev-server": "~3.1.11"
   },
